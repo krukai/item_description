@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>item_description</name>
+  <version>1.0.0</version>
+  <description>
+    This package provides 3D models of common parts such as profiles for simulation and visualization purposes.
+  </description>
+  <maintainer email="krueckel@fh-aachen.de">Kai Krückel</maintainer>
+  <license>BSD</license>
+  <!--url type="website">http://ros.org/wiki/item_description</url-->
+  <url type="repository">https://github.com/krukai/item_description</url>
+  <url type="bugtracker">https://github.com/krukai/item_description/issues</url>
+  <author email="krueckel@fh-aachen.de">Kai Krückel</author>
+
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
