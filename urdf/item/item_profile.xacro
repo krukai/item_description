@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="item_profile">
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="item_profile">
 
   <!-- Shared materials -->
   <material name="item_profile_natural">
