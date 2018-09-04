@@ -3,21 +3,46 @@
 
   <!-- Shared materials -->
   <material name="item_profile_natural">
-    <color rgba="0.7529412 0.7529412 0.7529412 1"/>
+    <color rgba="0.7529412 0.7529412 0.7529412 1" />
   </material>
 
   <!-- Item Profile 8 40x40 light -->
   <xacro:property name="item_profile_8_40x40_light_width" value="0.04" />
   <xacro:property name="item_profile_8_40x40_light_height" value="0.04" />
+  <xacro:property name="item_profile_8_40x40_light_weight_per_length" value="1.74" />
   <xacro:macro name="item_profile_8_40x40_light" params="color:=natural length name">
     <link name="${name}">
+      <inertial>
+        <mass value="${1.74*length}" />
+        <!-- TODO: accurate inertia values would be nice -->
+        <inertia ixx="${(1/12)
+                        * (item_profile_8_40x40_light_weight_per_length*length)
+                        * (item_profile_8_40x40_light_width*item_profile_8_40x40_light_width
+                           + item_profile_8_40x40_light_height*item_profile_8_40x40_light_height)}" ixy="0"  ixz="0"
+                 iyy="${(1/12)
+                        * (item_profile_8_40x40_light_weight_per_length*length)
+                        * (length*length
+                           + item_profile_8_40x40_light_height*item_profile_8_40x40_light_height)}" iyz="0"
+                 izz="${(1/12)
+                        * (item_profile_8_40x40_light_weight_per_length*length)
+                        * (length*length
+                           + item_profile_8_40x40_light_width*item_profile_8_40x40_light_width)}" />
+      </inertial>
       <visual>
+        <origin xyz="0 0 ${-0.5 * item_profile_8_40x40_light_height}" />
         <geometry>
           <mesh filename="package://item_description/meshes/item/item_profile_8_40x40_light_${color}.dae"
                 scale="${length} 1 1" />
         </geometry>
-        <origin xyz="0 0 ${-0.5 * item_profile_8_40x40_light_height}" />
       </visual>
+      <collision>
+        <origin xyz="0 0 ${-0.5 * item_profile_8_40x40_light_height}" />
+        <geometry>
+          <box size="${length}
+                     ${item_profile_8_40x40_light_width}
+                     ${item_profile_8_40x40_light_height}" />
+        </geometry>
+      </collision>
     </link>
   </xacro:macro>
 
